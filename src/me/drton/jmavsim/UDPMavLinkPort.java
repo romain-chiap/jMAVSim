@@ -144,6 +144,7 @@ public class UDPMavLinkPort extends MAVLinkPort {
                     System.out.println("[update] msg.name: " + msg.getMsgName() + ", type: " + msg.getMsgType());
                 }
                 IndicateReceivedMessage(msg.getMsgType());
+                msg.forwarded = true;
                 sendMessage(msg);
             } catch (IOException e) {
                 // Silently ignore this exception, we likely just have nobody on this port yet/already
