@@ -144,6 +144,7 @@ public class SerialMAVLinkPort extends MAVLinkPort {
                 if (msg == null) {
                     break;
                 }
+                msg.forwarded = true;
                 sendMessage(msg);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -167,6 +167,7 @@ public class TCPMavLinkPort extends MAVLinkPort {
                     System.out.println("[update] msg.name: " + msg.getMsgName() + ", type: " + msg.getMsgType());
                 }
                 IndicateReceivedMessage(msg.getMsgType());
+                msg.forwarded = true;
                 sendMessage(msg);
             } catch (IOException ignored) {
                 // This can happen when px4 shuts down and the connection is dropped.
