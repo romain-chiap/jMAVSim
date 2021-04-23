@@ -78,6 +78,10 @@ public class SerialMAVLinkPort extends MAVLinkPort {
             @Override
             public int write(ByteBuffer buffer) throws IOException {
                 try {
+                    int bufferCount = serialPort.getOutputBufferBytesCount();
+                    if (bufferCount > 10000) {
+                        return 0;
+                    }
                     byte[] b = new byte[buffer.remaining()];
                     buffer.get(b);
                     return serialPort.writeBytes(b) ? b.length : 0;
